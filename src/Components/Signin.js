@@ -1,5 +1,6 @@
 import React from 'react'
 import firebase from 'firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 
 function Signin(){
@@ -9,6 +10,7 @@ function Signin(){
         const provider=new firebase.auth.GoogleAuthProvider();
         auth.signInWithPopup(provider);
     }
+
     return (
         <div>
             <button onClick={googleSignIn}>  Google signin</button>

@@ -27,9 +27,11 @@ body {
   justify-content: flex-start;
 }
 .profileImage{
+  align-self: center;
+  margin-right: 5px;
   border-radius: 50%;
-  height: 3rem;
-  width: 3rem;
+  height: 2rem;
+  width: 2rem;
 }
 
 /* right side (user chats) */
@@ -49,7 +51,7 @@ body {
   flex-direction: column;
   justify-content: center;
   height: 90vh;
-  background-color: white;
+  background-color: #D1FAE5;
 }
 
 main {
@@ -148,20 +150,29 @@ header{
   flex-direction: row-reverse;
 }
 
-.sent p {
+.sent div {
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
   margin-right: 1rem;
-  padding:1rem;
   color: white;
-  background: #0b93f6;
+  background: black;
   align-self: flex-end;
 }
-.received p {
+.received div {
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
   margin-left: 1rem;
-  padding:1rem;
-  background: #e5e5ea;
+  background: white;
   color: black;
+}
+
+.msg{
+  margin:0.5rem 0;
+  display: flex;
+  flex-direction: column;
+}
+.msgTime{
+  color: #7a7a7a;
+  align-self: flex-end;
+  margin-right:8px;
 }

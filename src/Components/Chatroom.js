@@ -47,9 +47,10 @@ function Chatroom() {
   return (
     <div>
       <main>
+        
         {messages &&
           messages.map((msg,index) => {
-            return <Chat key={index} photoRef={auth.currentUser.photoURL} message={msg} />;
+            return <Chat key={index}  photoRef={auth.currentUser.photoURL} message={msg} />;
           })}
         <div ref={dummy}></div>
       </main>

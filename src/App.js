@@ -28,7 +28,7 @@ function App() {
             {/* {console.log(user)} */}
             {/* <img src={userData.photoURL}></img> */}
             <header>
-              <Signout />
+              <Signout  currentUser={user}/>
             </header>
             <section>{user ? <Chatroom /> : <Signin />}</section>
           </div>

@@ -32,13 +32,14 @@ function Chatroom() {
   const formHandler = async (e) => {
     e.preventDefault();
 
-    const { uid } = auth.currentUser;
+    const { uid,photoURL } = auth.currentUser;
     await messageRef.add({
       msg: setChat,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
+      photoURL
     });
-    setChatHandler(" ");
+    setChatHandler('');
     setFlag(false);
 
     dummy.current.scrollIntoView({ behaviour: "smooth" });
@@ -47,8 +48,8 @@ function Chatroom() {
     <div>
       <main>
         {messages &&
-          messages.map((msg) => {
-            return <Chat message={msg} />;
+          messages.map((msg,index) => {
+            return <Chat key={index} photoRef={auth.currentUser.photoURL} message={msg} />;
           })}
         <div ref={dummy}></div>
       </main>
@@ -66,6 +67,7 @@ function Chatroom() {
         />
         <button className="submitBtn" type="submit" disabled={!flag}>
           <FontAwesomeIcon
+            display={!flag}
             style={{ height: "1.5rem", width: "1.5rem", color: "#10B981" }}
             icon={faPaperPlane}
           ></FontAwesomeIcon>

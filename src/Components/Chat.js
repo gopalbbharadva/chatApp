@@ -10,7 +10,8 @@ function Chat(props) {
   return (
     <div>
       {/* <img src={photo} alt="sorry"/> */}
-      <div className="msg">
+      <div className={`message ${messageStatus}`}>
+      <img className="profileImage" src={props.photoRef}/>
         <p >{props.message.msg}</p>
       </div>
     </div>

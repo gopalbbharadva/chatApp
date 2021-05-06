@@ -36,17 +36,46 @@ body {
 .userChat {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   height: 100%;
   width: 75%;
   border: 1px solid black;
 }
-header {
-  height: 4rem;
-  background-color: #D1D5DB;
-}
-form {
+
+
+
+.App section {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90vh;
+  background-color: white;
+}
+
+main {
+  padding: 10px;
+  height: 80vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+main::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+main::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #6649b8;
+}
+
+form {
+  width: 75%;
+  display: flex;
+  position: fixed;
   justify-content: space-around;
   align-items: center;
   box-shadow: 0 0 5px 1px rgb(172, 170, 170);
@@ -54,6 +83,7 @@ form {
   background-color: white;
   height: 3rem;
 }
+
 input[type="text"] {
   width: 80%;
   max-width: 100%;
@@ -81,10 +111,20 @@ input[type="text"]:focus {
 /* header part */
 
 header{
-  box-shadow: 0 0 3px 1px #F3F4F6;
-  
-  display: flex;
+  box-shadow: 0 0 3px 2px #c1c2c2;
+  height: 3rem;
   justify-content: flex-end;
+  background-color: white;
+  min-height: 50px;
+  color: white;
+  position: fixed;
+  width: 75%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  z-index: 99;
+  padding: 10px;
+  box-sizing: border-box;
 }
 .logoutBtn{
   cursor: pointer;
@@ -94,7 +134,34 @@ header{
 }
 /* main part(message part) */
 
-.msg{
+/* .msg{
   background-color: teal;
+} */
+
+.message {
+  display: flex;
+  align-items: center;
 }
 
+
+.sent {
+  flex-direction: row-reverse;
+}
+
+.sent p {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  margin-right: 1rem;
+  padding:1rem;
+  color: white;
+  background: #0b93f6;
+  align-self: flex-end;
+}
+.received p {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  margin-left: 1rem;
+  padding:1rem;
+  background: #e5e5ea;
+  color: black;
+}

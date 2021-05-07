@@ -6,7 +6,7 @@ function Chat(props) {
 
   const auth = firebase.auth();
   const messageStatus = uid === auth.currentUser.uid ? "sent" : "received";
-  const time=props.message.createdAt.toDate();
+  const time=props.message.createdAt;
   let newDate=new Date(time*1000)
   let hours=newDate.getHours();
   let minutes=newDate.getMinutes();

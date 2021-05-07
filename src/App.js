@@ -9,6 +9,7 @@ import Chatroom from "./Components/Chatroom";
 import Signin from "./Components/Signin";
 import Signout from "./Components/Signout";
 import Users from "./Components/Users";
+import Signup from "./Components/Signup";
 
 
 function App() {
@@ -28,11 +29,11 @@ function App() {
             {/* {console.log(user)} */}
             {/* <img src={userData.photoURL}></img> */}
             <header>
-              <Signout  currentUser={user}/>
+              <Signout currentUser={user}/>
             </header>
             <section>{user ? <Chatroom /> : <Signin />}</section>
           </div>
-        </div>:<Signin />
+        </div>:<Signup />
       }
     </div>
   );

@@ -86,7 +86,7 @@ form {
   height: 3rem;
 }
 
-input[type="text"] {
+.inputChat{
   width: 80%;
   max-width: 100%;
   font-size: 1rem;
@@ -95,7 +95,7 @@ input[type="text"] {
   border-radius: 2rem;
   background-color: #c9c9e4;
 }
-input[type="text"]:focus {
+.inputChat:focus {
   outline: none;
 }
 
@@ -175,4 +175,79 @@ header{
   color: #7a7a7a;
   align-self: flex-end;
   margin-right:8px;
+}
+
+.entryContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.signupContainer{
+  border: 1px solid rgb(78, 76, 76);
+  box-shadow: 0 1px 2px 1px gray;
+  border-radius: 1rem;
+  padding: 3rem;
+  margin: auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signupField{
+  border: none;
+  width: 80%;
+  max-width: 100%;
+  font-size: 1rem;
+  margin: 1rem;
+  border-radius: 0;
+  border-bottom: 1px solid gray;
+}
+
+.signupField:focus{
+  outline: none;  
+}
+
+.signupContainer input[type=password]{
+  border: none;
+  width: 80%;
+  max-width: 100%;
+  font-size: 1rem;
+  margin: 1rem;
+  border-radius: 0;
+  border-bottom: 1px solid gray;
+}
+.signupContainer input[type=password]{
+  outline: none;
+}
+
+.signUp{
+  align-self: flex-start;
+  color: white;
+  cursor: pointer;
+  margin-left: 1rem;
+  border-radius: 1rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 1px 2px 0px black;
+  background-color: #3B82F6;
+}
+
+.signUp:hover{
+  background-color: #93C5FD;
+}
+
+.btns{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.toggleSign{
+  text-decoration: underline;
+  color: green;
+  cursor: pointer;
 }

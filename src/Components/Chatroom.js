@@ -14,7 +14,7 @@ function Chatroom() {
   let [setChat, setChatHandler] = useState("");
   let [flag, setFlag] = useState(false);
   const messageRef = firebase.firestore().collection("chats");
-  const query = messageRef.orderBy("createdAt").limit(20);
+  const query = messageRef.orderBy("createdAt").limit(30);
   const [messages] = useCollectionData(query);
 
   const chatHandler = (e) => {
@@ -61,9 +61,10 @@ function Chatroom() {
               </FontAwesomeIcon>
           </button>
         <input
+        className="inputChat"
           value={setChat}
           type="text"
-          onChange={chatHandler}
+          onChange={(e)=> chatHandler(e)}
           placeholder="Type something..."
         />
         <button className="submitBtn" type="submit" disabled={!flag}>

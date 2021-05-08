@@ -24,16 +24,12 @@ function App() {
             <Users />
           </div>
           <div className="userChat">
-            {/* {console.log(user.displayName)}
-        {console.log(user.photoURL)} */}
-            {/* {console.log(user)} */}
-            {/* <img src={userData.photoURL}></img> */}
             <header>
               <Signout currentUser={user}/>
             </header>
             <section>{user ? <Chatroom /> : <Signin />}</section>
           </div>
-        </div>:<Signup />
+        </div>:<Signin />
       }
     </div>
   );

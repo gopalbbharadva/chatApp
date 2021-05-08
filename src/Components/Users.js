@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import pop from "../images/pop.png";
+import dummy from "../images/dummy.png";
 import firebase from "firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
@@ -25,7 +25,7 @@ const Users = () => {
         {usr.map((usrname,index) => {
           return (
             <div key={index} className="user"> 
-              <img className="profileImage" src={user.photoURL} alt="sorry" />
+              <img className="profileImage" src={dummy} alt="sorry" />
               <p style={{ marginLeft: "1rem", color: "black" }}>{usrname}</p>
             </div>
           );

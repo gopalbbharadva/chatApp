@@ -11,53 +11,87 @@ function Chatroom() {
   const dummy = useRef();
   const auth = firebase.auth();
 
+  const [flag,setFlag]=useState(false);
   let [setChat, setChatHandler] = useState("");
   const messageRef = firebase.firestore().collection("chats");
   const query = messageRef.orderBy("createdAt").limit(30);
-  const [messages] = useCollectionData(query,{idField:'id'});
+  const [messages] = useCollectionData(query, { idField: "id" });
+  const [file, setFile] = useState(null);
+  const [error, setError] = useState("");
 
+
+  const inputHandler=(e)=>{
+      setChat=e.target.value;
+      if(setChat)
+      {
+        setChatHandler(setChat);
+        setFlag(true);
+      }
+      else{
+        setFlag(false);
+        setChatHandler('');
+      }
+  }
   const formHandler = async (e) => {
     e.preventDefault();
 
-    const { uid,photoURL } = auth.currentUser;
-    await messageRef.add({
-      msg: setChat,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      uid,
-      photoURL
-    });
-    setChatHandler('');
-
+    const { uid, photoURL } = auth.currentUser;
+      await messageRef.add({
+        msg: setChat,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        uid,
+        photoURL,
+      });
+    setChatHandler("");
     dummy.current.scrollIntoView({ behaviour: "smooth" });
   };
+
+  const fileHandler = (e) => {
+    const fileTypes = ["image/png", "image/jpeg"];
+    const selectedFile = e.target.files[0];
+    if (selectedFile && fileTypes.includes(selectedFile.type)) {
+      setFile(selectedFile);
+      setError(null);
+    } else {
+      setFile(null);
+      setError("You can only select png/jpeg file type");
+    }
+  };
+
   return (
     <div>
       <main>
         {messages &&
-          messages.map((msg,index) => {
-            return <Chat key={index}  photoRef={auth.currentUser.photoURL} 
-            message={msg} />;
+          messages.map((msg, index) => {
+            return (
+              <Chat
+                key={index}
+                photoRef={auth.currentUser.photoURL}
+                message={msg}
+              />
+            );
           })}
         <div ref={dummy}></div>
       </main>
+      {error && alert(`${error}`)}
       <form onSubmit={formHandler}>
-          <button className="sendImage">
-              <FontAwesomeIcon icon={faPaperclip}
-              style={{ height: "1.5rem", width: "1.5rem", color: "#9CA3AF" }} >
-              </FontAwesomeIcon>
-          </button>
+        <label>
+          <FontAwesomeIcon
+            style={{ fontSize: "1.5rem", cursor: "pointer" }}
+            className="icon"
+            icon={faPaperclip}
+          />
+          <input type="file" onChange={fileHandler} />
+        </label>
         <input
-        className="inputChat"
+          className="inputChat"
           value={setChat}
           type="text"
-          onChange={(e)=> setChatHandler(e.target.value)}
+          onChange={inputHandler}
           placeholder="Type something..."
         />
-        <button className="submitBtn" type="submit">
-          <FontAwesomeIcon
-            style={{ height: "1.5rem", width: "1.5rem", color: "#10B981" }}
-            icon={faPaperPlane}
-          ></FontAwesomeIcon>
+        <button disabled={!flag} className="submitBtn"  type="submit">
+         <FontAwesomeIcon icon={faPaperPlane} className="sendImage"></FontAwesomeIcon>
         </button>
         {/* <button type="submit" disabled={!flag}>
         </button> */}

@@ -15,21 +15,23 @@ function Signout(props) {
     if (_islogOut) auth.signOut();
   };
   return (
-    <div style={{ display: "flex" }}>
-      <img
-        className="profileImage"
-        src={user.photoURL}
-        alt="sorry not available"
-      />
-      <p style={{ color: "black" }}>{user.displayName}</p>
-      {auth.currentUser && (
-        <button className="logoutBtn" onClick={signOut}>
-          <FontAwesomeIcon
-            style={{ height: "1.5rem", width: "1.5rem", marginRight: "1rem" }}
-            icon={faSignOutAlt}
-          ></FontAwesomeIcon>
-        </button>
-      )}
+    <div>
+      <div style={{ display: "flex" }}>
+        <img
+          className="profileImage"
+          src={user.photoURL}
+          alt="sorry not available"
+        />
+        <p style={{ color: "black" }}>{user.displayName}</p>
+        {auth.currentUser && (
+          <button className="logoutBtn"  onClick={signOut}>
+            <FontAwesomeIcon
+              style={{ height: "1.5rem", width: "1.5rem", marginRight: "1rem" }}
+              icon={faSignOutAlt}
+            ></FontAwesomeIcon>
+          </button>
+        )}
+      </div>
     </div>
   );
 }
